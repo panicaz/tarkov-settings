@@ -19,7 +19,7 @@ namespace tarkov_settings
         private bool minimizeOnStart = false;
 
 
-        public int a = 1;
+ 
         // DLL libraries used to manage hotkeys
         [DllImport("user32.dll")]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
@@ -36,7 +36,6 @@ namespace tarkov_settings
         public MainForm()
         {
             InitializeComponent();
-
 
             RegisterHotKey(this.Handle, AllMapHotkey, 0, (int)Keys.NumPad1);
             RegisterHotKey(this.Handle, InterchangeMapHotkey, 0, (int)Keys.NumPad2);
@@ -82,11 +81,7 @@ namespace tarkov_settings
                 pMonitor.Add(pTarget.ToLower());
             }
             pMonitor.Init();
-
-
         }
-
-
 
         #region BCGS Getter/Setter
         public double Brightness
@@ -220,31 +215,26 @@ namespace tarkov_settings
                 DVLBar.Value = 10;
 
                 cController.ChangeColorRamp(brightness: 0.65,
-                            contrast: 1.00,
-                            gamma: 1.30,
-                            reset: false);
+                                            contrast: 1.00,
+                                            gamma: 1.30,
+                                            reset: false);
                 cController.DVL = 10;
             }
             if (m.Msg == 0x0312 && m.WParam.ToInt32() == DefaultHotkey)
             {
-
                 BrightnessBar.Value = 50;
                 ContrastBar.Value = 50;
                 GammaBar.Value = 100;
                 DVLBar.Value = 0;
 
                 cController.ChangeColorRamp(brightness: 0.5,
-            contrast: 0.50,
-            gamma: 1.00,
-            reset: false);
+                                            contrast: 0.50,
+                                            gamma: 1.00,
+                                            reset: false);
                 cController.DVL = 10;
             }
             base.WndProc(ref m);
-
-
         }
-
-
 
         private void TrackBar_ValueChanged(object sender, EventArgs e)
         {
