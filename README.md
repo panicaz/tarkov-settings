@@ -1,5 +1,11 @@
-# tarkov-settings
+# tarkov-settings (fullscreen hotkey presets branch)
 ![screenshot](./1.png)
+I am by no means a programmer and my code is terrible. Do not use unless absolutely necessary. Better wait for original tarkov-settings updates.
++ added 3 presets that works best for me
++ added hotkeys for the presets
+
+
+ORIGINAL TEXT BELOW
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fincheon-kim%2Ftarkov-settings&count_bg=%238C8C8C&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true)](https://hits.seeyoufarm.com)
 

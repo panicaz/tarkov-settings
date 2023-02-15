@@ -3,9 +3,13 @@ using System.Net.Http;
 using System.Windows.Forms;
 using tarkov_settings.Setting;
 using tarkov_settings.GPU;
+using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace tarkov_settings
 {
+
     public partial class MainForm : Form
     {
         private ProcessMonitor pMonitor = ProcessMonitor.Instance;
@@ -14,9 +18,29 @@ namespace tarkov_settings
 
         private bool minimizeOnStart = false;
 
+
+        public int a = 1;
+        // DLL libraries used to manage hotkeys
+        [DllImport("user32.dll")]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
+        [DllImport("user32.dll")]
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        const int AllMapHotkey = 1;
+        const int InterchangeMapHotkey = 2;
+        const int DefaultHotkey = 3;
+
+
+
+
         public MainForm()
         {
             InitializeComponent();
+
+
+            RegisterHotKey(this.Handle, AllMapHotkey, 0, (int)Keys.NumPad1);
+            RegisterHotKey(this.Handle, InterchangeMapHotkey, 0, (int)Keys.NumPad2);
+            RegisterHotKey(this.Handle, DefaultHotkey, 0, (int)Keys.NumPad3);
 
             #region Load App Settings
             // Load Settings
@@ -58,7 +82,11 @@ namespace tarkov_settings
                 pMonitor.Add(pTarget.ToLower());
             }
             pMonitor.Init();
+
+
         }
+
+
 
         #region BCGS Getter/Setter
         public double Brightness
@@ -135,6 +163,89 @@ namespace tarkov_settings
                 DVLBar.Value = 0;
             }
         }
+
+        private void AllMapButtonClick(object sender, EventArgs e)
+        {
+
+            BrightnessBar.Value = 75;
+            ContrastBar.Value = 100;
+            GammaBar.Value = 130;
+            DVLBar.Value = 10;
+        }
+
+        private void InterchangeMapButtonClick(object sender, EventArgs e)
+        {
+
+            BrightnessBar.Value = 65;
+            ContrastBar.Value = 100;
+            GammaBar.Value = 130;
+            DVLBar.Value = 10;
+        }
+
+        private void DefaultValuesButtonClick(object sender, EventArgs e)
+        {
+
+            BrightnessBar.Value = 50;
+            ContrastBar.Value = 50;
+            GammaBar.Value = 100;
+            DVLBar.Value = 0;
+        }
+        private readonly ColorController cController = ColorController.Instance;
+        public void Init()
+        {
+            // Init ColorController
+            cController.Init();
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x0312 && m.WParam.ToInt32() == AllMapHotkey)
+            {
+                BrightnessBar.Value = 75;
+                ContrastBar.Value = 100;
+                GammaBar.Value = 130;
+                DVLBar.Value = 10;
+
+                cController.ChangeColorRamp(brightness: 0.75,
+                                            contrast: 1.00,
+                                            gamma: 1.30,
+                                            reset: false);
+                cController.DVL = 10;
+            }
+            if (m.Msg == 0x0312 && m.WParam.ToInt32() == InterchangeMapHotkey)
+            {
+                BrightnessBar.Value = 65;
+                ContrastBar.Value = 100;
+                GammaBar.Value = 130;
+                DVLBar.Value = 10;
+
+                cController.ChangeColorRamp(brightness: 0.65,
+                            contrast: 1.00,
+                            gamma: 1.30,
+                            reset: false);
+                cController.DVL = 10;
+            }
+            if (m.Msg == 0x0312 && m.WParam.ToInt32() == DefaultHotkey)
+            {
+
+                BrightnessBar.Value = 50;
+                ContrastBar.Value = 50;
+                GammaBar.Value = 100;
+                DVLBar.Value = 0;
+
+                cController.ChangeColorRamp(brightness: 0.5,
+            contrast: 0.50,
+            gamma: 1.00,
+            reset: false);
+                cController.DVL = 10;
+            }
+            base.WndProc(ref m);
+
+
+        }
+
+
+
         private void TrackBar_ValueChanged(object sender, EventArgs e)
         {
             var trackBar = sender as TrackBar;
