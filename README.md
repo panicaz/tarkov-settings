@@ -1,10 +1,10 @@
 # tarkov-settings (fullscreen hotkey +presets branch)
-![screenshot](./screenshot.png)
+![screenshot](./1.png)
 I am by no means a C# programmer and my code is terrible. Do not use unless absolutely necessary. Better wait for original tarkov-settings updates.
 All the changes can be helpful for fullscreen users since tarkov-setting soes not work in fullscreen mode
 + added 3 presets that works best for me
 + added hotkeys for the presets 
-+ added hotkeys for +5 -5 brightness offset
++ added hotkeys for +5 -5 gamma offset
 + added manual apply for fullscreen users
 
 
