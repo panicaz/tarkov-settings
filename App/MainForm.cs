@@ -29,8 +29,8 @@ namespace tarkov_settings
         const int AllMapHotkey = 1;
         const int InterchangeMapHotkey = 2;
         const int DefaultHotkey = 3;
-        const int BrightnessUp = 4;
-        const int BrightnessDown = 5;
+        const int GammaUp = 4;
+        const int GammaDown = 5;
         const int ForceApply = 6;
 
 
@@ -42,8 +42,8 @@ namespace tarkov_settings
             RegisterHotKey(this.Handle, AllMapHotkey, 1, (int)Keys.NumPad1);
             RegisterHotKey(this.Handle, InterchangeMapHotkey, 1, (int)Keys.NumPad2);
             RegisterHotKey(this.Handle, DefaultHotkey, 1, (int)Keys.NumPad3);
-            RegisterHotKey(this.Handle, BrightnessUp, 1, (int)Keys.Up);
-            RegisterHotKey(this.Handle, BrightnessDown, 1, (int)Keys.Down);
+            RegisterHotKey(this.Handle, GammaUp, 1, (int)Keys.Up);
+            RegisterHotKey(this.Handle, GammaDown, 1, (int)Keys.Down);
             RegisterHotKey(this.Handle, ForceApply, 1, (int)Keys.NumPad0);
 
             #region Load App Settings
@@ -194,7 +194,6 @@ namespace tarkov_settings
             DVLBar.Value = 0;
         }
 
-
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 0x0312 && m.WParam.ToInt32() == AllMapHotkey)
@@ -237,22 +236,22 @@ namespace tarkov_settings
                 cController.DVL = 10;
             }
 
-            if (m.Msg == 0x0312 && m.WParam.ToInt32() == BrightnessUp)
+            if (m.Msg == 0x0312 && m.WParam.ToInt32() == GammaUp)
             {
-                if (BrightnessBar.Value < 100)
-                {   
-                    BrightnessBar.Value = BrightnessBar.Value + 5;
-                    cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                if (GammaBar.Value < 280)
+                {
+                    GammaBar.Value = GammaBar.Value + 5;
+                    cController.ChangeColorRamp(gamma: GammaBar.Value / 100.0,
                                                 reset: false);
                 }
             }
 
-                if (m.Msg == 0x0312 && m.WParam.ToInt32() == BrightnessDown)
+                if (m.Msg == 0x0312 && m.WParam.ToInt32() == GammaDown)
             {
-                if (BrightnessBar.Value > 0)
+                if (GammaBar.Value > 40)
                 {
-                    BrightnessBar.Value = BrightnessBar.Value - 5;
-                    cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                    GammaBar.Value = GammaBar.Value - 5;
+                    cController.ChangeColorRamp(gamma: GammaBar.Value / 100.0,
                                                 reset: false);
                 }
 

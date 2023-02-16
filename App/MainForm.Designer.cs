@@ -35,6 +35,7 @@
             this.MiscsButton = new System.Windows.Forms.ToolStripButton();
             this.ColorButton = new System.Windows.Forms.ToolStripButton();
             this.ColorPanel = new System.Windows.Forms.Panel();
+            this.forceApplyButton = new System.Windows.Forms.Button();
             this.presetsBox = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -57,7 +58,9 @@
             this.ContrastText = new System.Windows.Forms.TextBox();
             this.ContrastLabel = new System.Windows.Forms.Label();
             this.gammaPanel = new System.Windows.Forms.Panel();
+            this.tipBox2 = new System.Windows.Forms.TextBox();
             this.GammaText = new System.Windows.Forms.TextBox();
+            this.textTip1 = new System.Windows.Forms.TextBox();
             this.GammaBar = new System.Windows.Forms.TrackBar();
             this.GammaLabel = new System.Windows.Forms.Label();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
@@ -65,9 +68,6 @@
             this.enableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textTip1 = new System.Windows.Forms.TextBox();
-            this.tipBox2 = new System.Windows.Forms.TextBox();
-            this.forceApplyButton = new System.Windows.Forms.Button();
             this.layoutTablePanel.SuspendLayout();
             this.SideMenu.SuspendLayout();
             this.ColorPanel.SuspendLayout();
@@ -169,6 +169,17 @@
             this.ColorPanel.Name = "ColorPanel";
             this.ColorPanel.Size = new System.Drawing.Size(794, 366);
             this.ColorPanel.TabIndex = 2;
+            // 
+            // forceApplyButton
+            // 
+            this.forceApplyButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.forceApplyButton.Location = new System.Drawing.Point(3, 322);
+            this.forceApplyButton.Name = "forceApplyButton";
+            this.forceApplyButton.Size = new System.Drawing.Size(253, 33);
+            this.forceApplyButton.TabIndex = 21;
+            this.forceApplyButton.Text = "Manual Apply ALT+Num0";
+            this.forceApplyButton.UseVisualStyleBackColor = true;
+            this.forceApplyButton.Click += new System.EventHandler(this.forceApplyButton_Click);
             // 
             // presetsBox
             // 
@@ -322,8 +333,6 @@
             // 
             // brightnessPanel
             // 
-            this.brightnessPanel.Controls.Add(this.tipBox2);
-            this.brightnessPanel.Controls.Add(this.textTip1);
             this.brightnessPanel.Controls.Add(this.BrightnessBar);
             this.brightnessPanel.Controls.Add(this.BrightnessLabel);
             this.brightnessPanel.Controls.Add(this.BrightnessText);
@@ -412,7 +421,9 @@
             // 
             // gammaPanel
             // 
+            this.gammaPanel.Controls.Add(this.tipBox2);
             this.gammaPanel.Controls.Add(this.GammaText);
+            this.gammaPanel.Controls.Add(this.textTip1);
             this.gammaPanel.Controls.Add(this.GammaBar);
             this.gammaPanel.Controls.Add(this.GammaLabel);
             this.gammaPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -420,6 +431,17 @@
             this.gammaPanel.Name = "gammaPanel";
             this.gammaPanel.Size = new System.Drawing.Size(478, 90);
             this.gammaPanel.TabIndex = 2;
+            // 
+            // tipBox2
+            // 
+            this.tipBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tipBox2.Location = new System.Drawing.Point(313, 6);
+            this.tipBox2.Multiline = true;
+            this.tipBox2.Name = "tipBox2";
+            this.tipBox2.Size = new System.Drawing.Size(59, 31);
+            this.tipBox2.TabIndex = 26;
+            this.tipBox2.TabStop = false;
+            this.tipBox2.Text = "+5\r\nALT+UP";
             // 
             // GammaText
             // 
@@ -430,6 +452,17 @@
             this.GammaText.TabIndex = 26;
             this.GammaText.Text = "1.00";
             this.GammaText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textTip1
+            // 
+            this.textTip1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textTip1.Location = new System.Drawing.Point(93, 6);
+            this.textTip1.Multiline = true;
+            this.textTip1.Name = "textTip1";
+            this.textTip1.Size = new System.Drawing.Size(88, 31);
+            this.textTip1.TabIndex = 25;
+            this.textTip1.TabStop = false;
+            this.textTip1.Text = "-5\r\nALT+DOWN";
             // 
             // GammaBar
             // 
@@ -493,39 +526,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitFormClicked);
-            // 
-            // textTip1
-            // 
-            this.textTip1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textTip1.Location = new System.Drawing.Point(23, 47);
-            this.textTip1.Multiline = true;
-            this.textTip1.Name = "textTip1";
-            this.textTip1.Size = new System.Drawing.Size(100, 36);
-            this.textTip1.TabIndex = 25;
-            this.textTip1.TabStop = false;
-            this.textTip1.Text = "-5\r\nALT+DOWN";
-            // 
-            // tipBox2
-            // 
-            this.tipBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tipBox2.Location = new System.Drawing.Point(359, 47);
-            this.tipBox2.Multiline = true;
-            this.tipBox2.Name = "tipBox2";
-            this.tipBox2.Size = new System.Drawing.Size(59, 36);
-            this.tipBox2.TabIndex = 26;
-            this.tipBox2.TabStop = false;
-            this.tipBox2.Text = "+5\r\nALT+UP";
-            // 
-            // forceApplyButton
-            // 
-            this.forceApplyButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.forceApplyButton.Location = new System.Drawing.Point(3, 322);
-            this.forceApplyButton.Name = "forceApplyButton";
-            this.forceApplyButton.Size = new System.Drawing.Size(253, 33);
-            this.forceApplyButton.TabIndex = 21;
-            this.forceApplyButton.Text = "Manual Apply ALT+Num0";
-            this.forceApplyButton.UseVisualStyleBackColor = true;
-            this.forceApplyButton.Click += new System.EventHandler(this.forceApplyButton_Click);
             // 
             // MainForm
             // 
