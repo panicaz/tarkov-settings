@@ -241,7 +241,9 @@ namespace tarkov_settings
                 if (GammaBar.Value < 280)
                 {
                     GammaBar.Value = GammaBar.Value + 5;
-                    cController.ChangeColorRamp(gamma: GammaBar.Value / 100.0,
+                    cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                                                contrast: ContrastBar.Value / 100.0,
+                                                gamma: GammaBar.Value / 100.0,
                                                 reset: false);
                 }
             }
@@ -251,7 +253,9 @@ namespace tarkov_settings
                 if (GammaBar.Value > 40)
                 {
                     GammaBar.Value = GammaBar.Value - 5;
-                    cController.ChangeColorRamp(gamma: GammaBar.Value / 100.0,
+                    cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                                                contrast: ContrastBar.Value / 100.0,
+                                                gamma: GammaBar.Value / 100.0,
                                                 reset: false);
                 }
 
