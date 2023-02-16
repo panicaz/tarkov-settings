@@ -29,7 +29,9 @@ namespace tarkov_settings
         const int AllMapHotkey = 1;
         const int InterchangeMapHotkey = 2;
         const int DefaultHotkey = 3;
-
+        const int BrightnessUp = 4;
+        const int BrightnessDown = 5;
+        const int ForceApply = 6;
 
 
 
@@ -37,9 +39,12 @@ namespace tarkov_settings
         {
             InitializeComponent();
 
-            RegisterHotKey(this.Handle, AllMapHotkey, 0, (int)Keys.NumPad1);
-            RegisterHotKey(this.Handle, InterchangeMapHotkey, 0, (int)Keys.NumPad2);
-            RegisterHotKey(this.Handle, DefaultHotkey, 0, (int)Keys.NumPad3);
+            RegisterHotKey(this.Handle, AllMapHotkey, 1, (int)Keys.NumPad1);
+            RegisterHotKey(this.Handle, InterchangeMapHotkey, 1, (int)Keys.NumPad2);
+            RegisterHotKey(this.Handle, DefaultHotkey, 1, (int)Keys.NumPad3);
+            RegisterHotKey(this.Handle, BrightnessUp, 1, (int)Keys.Up);
+            RegisterHotKey(this.Handle, BrightnessDown, 1, (int)Keys.Down);
+            RegisterHotKey(this.Handle, ForceApply, 1, (int)Keys.NumPad0);
 
             #region Load App Settings
             // Load Settings
@@ -158,10 +163,15 @@ namespace tarkov_settings
                 DVLBar.Value = 0;
             }
         }
+        private readonly ColorController cController = ColorController.Instance;
+        public void Init()
+        {
+            // Init ColorController
+            cController.Init();
+        }
 
         private void AllMapButtonClick(object sender, EventArgs e)
         {
-
             BrightnessBar.Value = 75;
             ContrastBar.Value = 100;
             GammaBar.Value = 130;
@@ -170,7 +180,6 @@ namespace tarkov_settings
 
         private void InterchangeMapButtonClick(object sender, EventArgs e)
         {
-
             BrightnessBar.Value = 65;
             ContrastBar.Value = 100;
             GammaBar.Value = 130;
@@ -179,18 +188,12 @@ namespace tarkov_settings
 
         private void DefaultValuesButtonClick(object sender, EventArgs e)
         {
-
             BrightnessBar.Value = 50;
             ContrastBar.Value = 50;
             GammaBar.Value = 100;
             DVLBar.Value = 0;
         }
-        private readonly ColorController cController = ColorController.Instance;
-        public void Init()
-        {
-            // Init ColorController
-            cController.Init();
-        }
+
 
         protected override void WndProc(ref Message m)
         {
@@ -233,6 +236,37 @@ namespace tarkov_settings
                                             reset: false);
                 cController.DVL = 10;
             }
+
+            if (m.Msg == 0x0312 && m.WParam.ToInt32() == BrightnessUp)
+            {
+                if (BrightnessBar.Value < 100)
+                {   
+                    BrightnessBar.Value = BrightnessBar.Value + 5;
+                    cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                                                reset: false);
+                }
+            }
+
+                if (m.Msg == 0x0312 && m.WParam.ToInt32() == BrightnessDown)
+            {
+                if (BrightnessBar.Value > 0)
+                {
+                    BrightnessBar.Value = BrightnessBar.Value - 5;
+                    cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                                                reset: false);
+                }
+
+            }
+
+            if (m.Msg == 0x0312 && m.WParam.ToInt32() == ForceApply)
+            {
+                cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                                            contrast: ContrastBar.Value / 100.0,
+                                            gamma: GammaBar.Value / 100.0,
+                                            reset: false);
+                cController.DVL = DVLBar.Value;
+            }
+
             base.WndProc(ref m);
         }
 
@@ -307,6 +341,15 @@ namespace tarkov_settings
         private void CheckOnMinimizeToTray(object sender, EventArgs e)
         {
             this.minimizeOnStart = this.minimizeStartCheckBox.Checked;
+        }
+
+        private void forceApplyButton_Click(object sender, EventArgs e)
+        {
+            cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                            contrast: ContrastBar.Value / 100.0,
+                            gamma: GammaBar.Value / 100.0,
+                            reset: false);
+            cController.DVL = DVLBar.Value;
         }
     }
 }

@@ -35,7 +35,10 @@
             this.MiscsButton = new System.Windows.Forms.ToolStripButton();
             this.ColorButton = new System.Windows.Forms.ToolStripButton();
             this.ColorPanel = new System.Windows.Forms.Panel();
+            this.presetsBox = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.minimizeStartCheckBox = new System.Windows.Forms.CheckBox();
             this.DisplayCombo = new System.Windows.Forms.ComboBox();
             this.DVLGroupBox = new System.Windows.Forms.GroupBox();
@@ -62,12 +65,13 @@
             this.enableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.presetsBox = new System.Windows.Forms.GroupBox();
+            this.textTip1 = new System.Windows.Forms.TextBox();
+            this.tipBox2 = new System.Windows.Forms.TextBox();
+            this.forceApplyButton = new System.Windows.Forms.Button();
             this.layoutTablePanel.SuspendLayout();
             this.SideMenu.SuspendLayout();
             this.ColorPanel.SuspendLayout();
+            this.presetsBox.SuspendLayout();
             this.DVLGroupBox.SuspendLayout();
             this.DVLPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DVLBar)).BeginInit();
@@ -80,7 +84,6 @@
             this.gammaPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GammaBar)).BeginInit();
             this.trayMenuStrip.SuspendLayout();
-            this.presetsBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // layoutTablePanel
@@ -155,6 +158,7 @@
             // 
             // ColorPanel
             // 
+            this.ColorPanel.Controls.Add(this.forceApplyButton);
             this.ColorPanel.Controls.Add(this.presetsBox);
             this.ColorPanel.Controls.Add(this.minimizeStartCheckBox);
             this.ColorPanel.Controls.Add(this.DisplayCombo);
@@ -166,6 +170,18 @@
             this.ColorPanel.Size = new System.Drawing.Size(794, 366);
             this.ColorPanel.TabIndex = 2;
             // 
+            // presetsBox
+            // 
+            this.presetsBox.Controls.Add(this.button1);
+            this.presetsBox.Controls.Add(this.button3);
+            this.presetsBox.Controls.Add(this.button2);
+            this.presetsBox.Location = new System.Drawing.Point(650, 9);
+            this.presetsBox.Name = "presetsBox";
+            this.presetsBox.Size = new System.Drawing.Size(132, 341);
+            this.presetsBox.TabIndex = 20;
+            this.presetsBox.TabStop = false;
+            this.presetsBox.Text = "Presets";
+            // 
             // button1
             // 
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -173,9 +189,31 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 100);
             this.button1.TabIndex = 17;
-            this.button1.Text = "ALL MAPS:\r\nB 0.75\r\nC 1.00\r\nG 1.30\r\n\r\nNum1";
+            this.button1.Text = "ALL MAPS:\r\nB 0.75\r\nC 1.00\r\nG 1.30\r\n\r\nALT+Num1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.AllMapButtonClick);
+            // 
+            // button3
+            // 
+            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button3.Location = new System.Drawing.Point(17, 233);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(100, 100);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "DEFAULT:\r\nB 0.50\r\nC 0.50\r\nG 1.00\r\n\r\nALT+Num3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.DefaultValuesButtonClick);
+            // 
+            // button2
+            // 
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button2.Location = new System.Drawing.Point(17, 127);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 100);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "INTERCHANGE:\r\nB 0.65\r\nC 1.00\r\nG 1.30\r\n\r\nALT+Num2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.InterchangeMapButtonClick);
             // 
             // minimizeStartCheckBox
             // 
@@ -284,6 +322,8 @@
             // 
             // brightnessPanel
             // 
+            this.brightnessPanel.Controls.Add(this.tipBox2);
+            this.brightnessPanel.Controls.Add(this.textTip1);
             this.brightnessPanel.Controls.Add(this.BrightnessBar);
             this.brightnessPanel.Controls.Add(this.BrightnessLabel);
             this.brightnessPanel.Controls.Add(this.BrightnessText);
@@ -454,39 +494,38 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitFormClicked);
             // 
-            // button2
+            // textTip1
             // 
-            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(17, 127);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 100);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "INTERCHANGE:\r\nB 0.65\r\nC 1.00\r\nG 1.30\r\n\r\nNum2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.InterchangeMapButtonClick);
+            this.textTip1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textTip1.Location = new System.Drawing.Point(23, 47);
+            this.textTip1.Multiline = true;
+            this.textTip1.Name = "textTip1";
+            this.textTip1.Size = new System.Drawing.Size(100, 36);
+            this.textTip1.TabIndex = 25;
+            this.textTip1.TabStop = false;
+            this.textTip1.Text = "-5\r\nALT+DOWN";
             // 
-            // button3
+            // tipBox2
             // 
-            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.Location = new System.Drawing.Point(17, 233);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 100);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "DEFAULT:\r\nB 0.50\r\nC 0.50\r\nG 1.00\r\n\r\nNum3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.DefaultValuesButtonClick);
+            this.tipBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tipBox2.Location = new System.Drawing.Point(359, 47);
+            this.tipBox2.Multiline = true;
+            this.tipBox2.Name = "tipBox2";
+            this.tipBox2.Size = new System.Drawing.Size(59, 36);
+            this.tipBox2.TabIndex = 26;
+            this.tipBox2.TabStop = false;
+            this.tipBox2.Text = "+5\r\nALT+UP";
             // 
-            // presetsBox
+            // forceApplyButton
             // 
-            this.presetsBox.Controls.Add(this.button1);
-            this.presetsBox.Controls.Add(this.button3);
-            this.presetsBox.Controls.Add(this.button2);
-            this.presetsBox.Location = new System.Drawing.Point(650, 9);
-            this.presetsBox.Name = "presetsBox";
-            this.presetsBox.Size = new System.Drawing.Size(132, 341);
-            this.presetsBox.TabIndex = 20;
-            this.presetsBox.TabStop = false;
-            this.presetsBox.Text = "Presets";
+            this.forceApplyButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.forceApplyButton.Location = new System.Drawing.Point(3, 322);
+            this.forceApplyButton.Name = "forceApplyButton";
+            this.forceApplyButton.Size = new System.Drawing.Size(253, 33);
+            this.forceApplyButton.TabIndex = 21;
+            this.forceApplyButton.Text = "Manual Apply ALT+Num0";
+            this.forceApplyButton.UseVisualStyleBackColor = true;
+            this.forceApplyButton.Click += new System.EventHandler(this.forceApplyButton_Click);
             // 
             // MainForm
             // 
@@ -506,6 +545,7 @@
             this.SideMenu.PerformLayout();
             this.ColorPanel.ResumeLayout(false);
             this.ColorPanel.PerformLayout();
+            this.presetsBox.ResumeLayout(false);
             this.DVLGroupBox.ResumeLayout(false);
             this.DVLPanel.ResumeLayout(false);
             this.DVLPanel.PerformLayout();
@@ -522,7 +562,6 @@
             this.gammaPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GammaBar)).EndInit();
             this.trayMenuStrip.ResumeLayout(false);
-            this.presetsBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -566,6 +605,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox presetsBox;
+        private System.Windows.Forms.TextBox tipBox2;
+        private System.Windows.Forms.TextBox textTip1;
+        private System.Windows.Forms.Button forceApplyButton;
     }
 }
 
