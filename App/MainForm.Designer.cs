@@ -58,9 +58,7 @@
             this.ContrastText = new System.Windows.Forms.TextBox();
             this.ContrastLabel = new System.Windows.Forms.Label();
             this.gammaPanel = new System.Windows.Forms.Panel();
-            this.tipBox2 = new System.Windows.Forms.TextBox();
             this.GammaText = new System.Windows.Forms.TextBox();
-            this.textTip1 = new System.Windows.Forms.TextBox();
             this.GammaBar = new System.Windows.Forms.TrackBar();
             this.GammaLabel = new System.Windows.Forms.Label();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
@@ -68,6 +66,15 @@
             this.enableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.profile1BrightnessText = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.profile1ContrastText = new System.Windows.Forms.TextBox();
+            this.profile1GammaText = new System.Windows.Forms.TextBox();
+            this.profile2GammaText = new System.Windows.Forms.TextBox();
+            this.profile2ContrastText = new System.Windows.Forms.TextBox();
+            this.profile2BrightnessText = new System.Windows.Forms.TextBox();
             this.layoutTablePanel.SuspendLayout();
             this.SideMenu.SuspendLayout();
             this.ColorPanel.SuspendLayout();
@@ -111,7 +118,7 @@
             this.layoutTablePanel.RowCount = 1;
             this.layoutTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.4669F));
             this.layoutTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.5331F));
-            this.layoutTablePanel.Size = new System.Drawing.Size(892, 372);
+            this.layoutTablePanel.Size = new System.Drawing.Size(932, 367);
             this.layoutTablePanel.TabIndex = 0;
             // 
             // SideMenu
@@ -128,7 +135,7 @@
             this.SideMenu.Location = new System.Drawing.Point(0, 5);
             this.SideMenu.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.SideMenu.Name = "SideMenu";
-            this.SideMenu.Size = new System.Drawing.Size(92, 362);
+            this.SideMenu.Size = new System.Drawing.Size(96, 357);
             this.SideMenu.TabIndex = 1;
             this.SideMenu.Text = "colorSettings";
             // 
@@ -140,7 +147,7 @@
             this.MiscsButton.Image = global::tarkov_settings.Properties.Resources.nikita;
             this.MiscsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MiscsButton.Name = "MiscsButton";
-            this.MiscsButton.Size = new System.Drawing.Size(90, 66);
+            this.MiscsButton.Size = new System.Drawing.Size(94, 66);
             this.MiscsButton.Text = "Miscs";
             this.MiscsButton.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.MiscsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -152,7 +159,7 @@
             this.ColorButton.Image = global::tarkov_settings.Properties.Resources.nikita_rainbow;
             this.ColorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ColorButton.Name = "ColorButton";
-            this.ColorButton.Size = new System.Drawing.Size(90, 66);
+            this.ColorButton.Size = new System.Drawing.Size(94, 66);
             this.ColorButton.Text = "Color";
             this.ColorButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -165,9 +172,9 @@
             this.ColorPanel.Controls.Add(this.DVLGroupBox);
             this.ColorPanel.Controls.Add(this.colorGroupBox);
             this.ColorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ColorPanel.Location = new System.Drawing.Point(95, 3);
+            this.ColorPanel.Location = new System.Drawing.Point(99, 3);
             this.ColorPanel.Name = "ColorPanel";
-            this.ColorPanel.Size = new System.Drawing.Size(794, 366);
+            this.ColorPanel.Size = new System.Drawing.Size(830, 361);
             this.ColorPanel.TabIndex = 2;
             // 
             // forceApplyButton
@@ -175,7 +182,7 @@
             this.forceApplyButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.forceApplyButton.Location = new System.Drawing.Point(3, 322);
             this.forceApplyButton.Name = "forceApplyButton";
-            this.forceApplyButton.Size = new System.Drawing.Size(253, 33);
+            this.forceApplyButton.Size = new System.Drawing.Size(343, 33);
             this.forceApplyButton.TabIndex = 21;
             this.forceApplyButton.Text = "Manual Apply ALT+Num0";
             this.forceApplyButton.UseVisualStyleBackColor = true;
@@ -183,12 +190,18 @@
             // 
             // presetsBox
             // 
+            this.presetsBox.Controls.Add(this.profile2GammaText);
+            this.presetsBox.Controls.Add(this.profile2ContrastText);
+            this.presetsBox.Controls.Add(this.profile2BrightnessText);
+            this.presetsBox.Controls.Add(this.profile1GammaText);
+            this.presetsBox.Controls.Add(this.profile1ContrastText);
+            this.presetsBox.Controls.Add(this.profile1BrightnessText);
             this.presetsBox.Controls.Add(this.button1);
             this.presetsBox.Controls.Add(this.button3);
             this.presetsBox.Controls.Add(this.button2);
             this.presetsBox.Location = new System.Drawing.Point(650, 9);
             this.presetsBox.Name = "presetsBox";
-            this.presetsBox.Size = new System.Drawing.Size(132, 341);
+            this.presetsBox.Size = new System.Drawing.Size(172, 307);
             this.presetsBox.TabIndex = 20;
             this.presetsBox.TabStop = false;
             this.presetsBox.Text = "Presets";
@@ -196,33 +209,33 @@
             // button1
             // 
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(17, 21);
+            this.button1.Location = new System.Drawing.Point(18, 21);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 100);
+            this.button1.Size = new System.Drawing.Size(100, 80);
             this.button1.TabIndex = 17;
-            this.button1.Text = "ALL MAPS:\r\nB 0.75\r\nC 1.00\r\nG 1.30\r\n\r\nALT+Num1";
+            this.button1.Text = "ALL MAPS\r\nAlt+Num1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.AllMapButtonClick);
             // 
             // button3
             // 
             this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.Location = new System.Drawing.Point(17, 233);
+            this.button3.Location = new System.Drawing.Point(18, 209);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 100);
+            this.button3.Size = new System.Drawing.Size(100, 80);
             this.button3.TabIndex = 19;
-            this.button3.Text = "DEFAULT:\r\nB 0.50\r\nC 0.50\r\nG 1.00\r\n\r\nALT+Num3";
+            this.button3.Text = "DEFAULT\r\nAlt+Num3";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.DefaultValuesButtonClick);
             // 
             // button2
             // 
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(17, 127);
+            this.button2.Location = new System.Drawing.Point(18, 116);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 100);
+            this.button2.Size = new System.Drawing.Size(100, 80);
             this.button2.TabIndex = 18;
-            this.button2.Text = "INTERCHANGE:\r\nB 0.65\r\nC 1.00\r\nG 1.30\r\n\r\nALT+Num2";
+            this.button2.Text = "INTERCHANGE\r\nAlt+Num2";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.InterchangeMapButtonClick);
             // 
@@ -231,7 +244,7 @@
             this.minimizeStartCheckBox.AutoSize = true;
             this.minimizeStartCheckBox.BackColor = System.Drawing.Color.Transparent;
             this.minimizeStartCheckBox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.minimizeStartCheckBox.Location = new System.Drawing.Point(289, 332);
+            this.minimizeStartCheckBox.Location = new System.Drawing.Point(443, 330);
             this.minimizeStartCheckBox.Name = "minimizeStartCheckBox";
             this.minimizeStartCheckBox.Size = new System.Drawing.Size(201, 18);
             this.minimizeStartCheckBox.TabIndex = 16;
@@ -244,9 +257,9 @@
             this.DisplayCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DisplayCombo.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.DisplayCombo.FormattingEnabled = true;
-            this.DisplayCombo.Location = new System.Drawing.Point(502, 328);
+            this.DisplayCombo.Location = new System.Drawing.Point(650, 328);
             this.DisplayCombo.Name = "DisplayCombo";
-            this.DisplayCombo.Size = new System.Drawing.Size(139, 22);
+            this.DisplayCombo.Size = new System.Drawing.Size(172, 22);
             this.DisplayCombo.TabIndex = 15;
             this.DisplayCombo.SelectedValueChanged += new System.EventHandler(this.DisplayCombo_SelectedValueChanged);
             // 
@@ -346,7 +359,6 @@
             // 
             this.BrightnessBar.Location = new System.Drawing.Point(13, 27);
             this.BrightnessBar.Maximum = 100;
-            this.BrightnessBar.Minimum = -100;
             this.BrightnessBar.Name = "BrightnessBar";
             this.BrightnessBar.Size = new System.Drawing.Size(397, 45);
             this.BrightnessBar.TabIndex = 18;
@@ -390,7 +402,6 @@
             // 
             this.ContrastBar.Location = new System.Drawing.Point(13, 39);
             this.ContrastBar.Maximum = 100;
-            this.ContrastBar.Minimum = -100;
             this.ContrastBar.Name = "ContrastBar";
             this.ContrastBar.Size = new System.Drawing.Size(397, 45);
             this.ContrastBar.TabIndex = 19;
@@ -421,9 +432,10 @@
             // 
             // gammaPanel
             // 
-            this.gammaPanel.Controls.Add(this.tipBox2);
+            this.gammaPanel.Controls.Add(this.label3);
+            this.gammaPanel.Controls.Add(this.label2);
+            this.gammaPanel.Controls.Add(this.label1);
             this.gammaPanel.Controls.Add(this.GammaText);
-            this.gammaPanel.Controls.Add(this.textTip1);
             this.gammaPanel.Controls.Add(this.GammaBar);
             this.gammaPanel.Controls.Add(this.GammaLabel);
             this.gammaPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -431,17 +443,6 @@
             this.gammaPanel.Name = "gammaPanel";
             this.gammaPanel.Size = new System.Drawing.Size(478, 90);
             this.gammaPanel.TabIndex = 2;
-            // 
-            // tipBox2
-            // 
-            this.tipBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tipBox2.Location = new System.Drawing.Point(313, 6);
-            this.tipBox2.Multiline = true;
-            this.tipBox2.Name = "tipBox2";
-            this.tipBox2.Size = new System.Drawing.Size(59, 31);
-            this.tipBox2.TabIndex = 26;
-            this.tipBox2.TabStop = false;
-            this.tipBox2.Text = "+5\r\nALT+UP";
             // 
             // GammaText
             // 
@@ -452,17 +453,6 @@
             this.GammaText.TabIndex = 26;
             this.GammaText.Text = "1.00";
             this.GammaText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textTip1
-            // 
-            this.textTip1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textTip1.Location = new System.Drawing.Point(93, 6);
-            this.textTip1.Multiline = true;
-            this.textTip1.Name = "textTip1";
-            this.textTip1.Size = new System.Drawing.Size(88, 31);
-            this.textTip1.TabIndex = 25;
-            this.textTip1.TabStop = false;
-            this.textTip1.Text = "-5\r\nALT+DOWN";
             // 
             // GammaBar
             // 
@@ -527,11 +517,88 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitFormClicked);
             // 
+            // profile1BrightnessText
+            // 
+            this.profile1BrightnessText.Location = new System.Drawing.Point(124, 22);
+            this.profile1BrightnessText.Name = "profile1BrightnessText";
+            this.profile1BrightnessText.Size = new System.Drawing.Size(33, 22);
+            this.profile1BrightnessText.TabIndex = 20;
+            this.profile1BrightnessText.Text = "50";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(20, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 14);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "-10 alt+down";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(379, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 14);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "label2";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label3.Location = new System.Drawing.Point(329, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 14);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "+10 alt+up";
+            // 
+            // profile1ContrastText
+            // 
+            this.profile1ContrastText.Location = new System.Drawing.Point(124, 50);
+            this.profile1ContrastText.Name = "profile1ContrastText";
+            this.profile1ContrastText.Size = new System.Drawing.Size(33, 22);
+            this.profile1ContrastText.TabIndex = 21;
+            this.profile1ContrastText.Text = "65";
+            // 
+            // profile1GammaText
+            // 
+            this.profile1GammaText.Location = new System.Drawing.Point(124, 78);
+            this.profile1GammaText.Name = "profile1GammaText";
+            this.profile1GammaText.Size = new System.Drawing.Size(33, 22);
+            this.profile1GammaText.TabIndex = 22;
+            this.profile1GammaText.Text = "130";
+            // 
+            // profile2GammaText
+            // 
+            this.profile2GammaText.Location = new System.Drawing.Point(124, 173);
+            this.profile2GammaText.Name = "profile2GammaText";
+            this.profile2GammaText.Size = new System.Drawing.Size(33, 22);
+            this.profile2GammaText.TabIndex = 25;
+            this.profile2GammaText.Text = "130";
+            // 
+            // profile2ContrastText
+            // 
+            this.profile2ContrastText.Location = new System.Drawing.Point(124, 145);
+            this.profile2ContrastText.Name = "profile2ContrastText";
+            this.profile2ContrastText.Size = new System.Drawing.Size(33, 22);
+            this.profile2ContrastText.TabIndex = 24;
+            this.profile2ContrastText.Text = "80";
+            // 
+            // profile2BrightnessText
+            // 
+            this.profile2BrightnessText.Location = new System.Drawing.Point(124, 117);
+            this.profile2BrightnessText.Name = "profile2BrightnessText";
+            this.profile2BrightnessText.Size = new System.Drawing.Size(33, 22);
+            this.profile2BrightnessText.TabIndex = 23;
+            this.profile2BrightnessText.Text = "50";
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(892, 372);
+            this.ClientSize = new System.Drawing.Size(932, 367);
             this.Controls.Add(this.layoutTablePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -546,6 +613,7 @@
             this.ColorPanel.ResumeLayout(false);
             this.ColorPanel.PerformLayout();
             this.presetsBox.ResumeLayout(false);
+            this.presetsBox.PerformLayout();
             this.DVLGroupBox.ResumeLayout(false);
             this.DVLPanel.ResumeLayout(false);
             this.DVLPanel.PerformLayout();
@@ -605,9 +673,16 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox presetsBox;
-        private System.Windows.Forms.TextBox tipBox2;
-        private System.Windows.Forms.TextBox textTip1;
         private System.Windows.Forms.Button forceApplyButton;
+        private System.Windows.Forms.TextBox profile1BrightnessText;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox profile1GammaText;
+        private System.Windows.Forms.TextBox profile1ContrastText;
+        private System.Windows.Forms.TextBox profile2GammaText;
+        private System.Windows.Forms.TextBox profile2ContrastText;
+        private System.Windows.Forms.TextBox profile2BrightnessText;
     }
 }
 

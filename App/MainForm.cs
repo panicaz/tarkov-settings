@@ -6,6 +6,7 @@ using tarkov_settings.GPU;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace tarkov_settings
 {
@@ -56,8 +57,15 @@ namespace tarkov_settings
             DVL = appSetting.saturation;
             minimizeOnStart = appSetting.minimizeOnStart;
             this.minimizeStartCheckBox.Checked = minimizeOnStart;
+            Prof1Brigtness = appSetting.prof1Brightness;
+            Prof1Contrast = appSetting.prof1Contrast;
+            Prof1Gamma = appSetting.prof1Gamma;
+            Prof2Brigtness = appSetting.prof2Brightness;
+            Prof2Contrast = appSetting.prof2Contrast;
+            Prof2Gamma = appSetting.prof2Gamma;
+
             #endregion
-            
+
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             this.Text = String.Format("Tarkov Settings {0}", version);
             _ = new UpdateNotifier(version);
@@ -111,6 +119,42 @@ namespace tarkov_settings
         {
             get => DVLBar.Value;
             set => DVLBar.Value = value;
+        }
+
+        public int Prof1Brigtness
+        {
+            get => int.Parse(profile1BrightnessText.Text);
+            set => profile1BrightnessText.Text = value.ToString();
+        }
+
+        public int Prof1Contrast
+        {
+            get => int.Parse(profile1ContrastText.Text);
+            set => profile1ContrastText.Text = value.ToString();
+        }
+
+        public int Prof1Gamma
+        {
+            get => int.Parse(profile1GammaText.Text);
+            set => profile1GammaText.Text = value.ToString();
+        }
+
+        public int Prof2Brigtness
+        {
+            get => int.Parse(profile2BrightnessText.Text);
+            set => profile2BrightnessText.Text = value.ToString();
+        }
+
+        public int Prof2Contrast
+        {
+            get => int.Parse(profile2ContrastText.Text);
+            set => profile2ContrastText.Text = value.ToString();
+        }
+
+        public int Prof2Gamma
+        {
+            get => int.Parse(profile2GammaText.Text);
+            set => profile2GammaText.Text = value.ToString();
         }
 
         public (double, double, double, int) GetColorValue()
@@ -172,18 +216,38 @@ namespace tarkov_settings
 
         private void AllMapButtonClick(object sender, EventArgs e)
         {
-            BrightnessBar.Value = 75;
-            ContrastBar.Value = 100;
-            GammaBar.Value = 130;
-            DVLBar.Value = 10;
+            try
+            {
+                int profile1Brightness = int.Parse(profile1BrightnessText.Text);
+                int profile1Contrast = int.Parse(profile1ContrastText.Text);
+                int profile1Gamma = int.Parse(profile1GammaText.Text);
+                BrightnessBar.Value = profile1Brightness;
+                ContrastBar.Value = profile1Contrast;
+                GammaBar.Value = profile1Gamma;
+                DVLBar.Value = 10;
+            }
+            catch
+            {
+                MessageBox.Show("Invalid number entered or adjustment range exceeded");
+            }
         }
 
         private void InterchangeMapButtonClick(object sender, EventArgs e)
         {
-            BrightnessBar.Value = 65;
-            ContrastBar.Value = 100;
-            GammaBar.Value = 130;
-            DVLBar.Value = 10;
+            try
+            {
+                int profile2Brightness = int.Parse(profile2BrightnessText.Text);
+                int profile2Contrast = int.Parse(profile2ContrastText.Text);
+                int profile2Gamma = int.Parse(profile2GammaText.Text);
+                BrightnessBar.Value = profile2Brightness;
+                ContrastBar.Value = profile2Contrast;
+                GammaBar.Value = profile2Gamma;
+                DVLBar.Value = 10;
+            }
+            catch
+            {
+                MessageBox.Show("Invalid number entered or adjustment range exceeded");
+            }
         }
 
         private void DefaultValuesButtonClick(object sender, EventArgs e)
@@ -198,29 +262,51 @@ namespace tarkov_settings
         {
             if (m.Msg == 0x0312 && m.WParam.ToInt32() == AllMapHotkey)
             {
-                BrightnessBar.Value = 75;
-                ContrastBar.Value = 100;
-                GammaBar.Value = 130;
-                DVLBar.Value = 10;
+                try
+                {
+                    int profile1Brightness = int.Parse(profile1BrightnessText.Text);
+                    int profile1Contrast = int.Parse(profile1ContrastText.Text);
+                    int profile1Gamma = int.Parse(profile1GammaText.Text);
+                    BrightnessBar.Value = profile1Brightness;
+                    ContrastBar.Value = profile1Contrast;
+                    GammaBar.Value = profile1Gamma;
+                    DVLBar.Value = 10;
 
-                cController.ChangeColorRamp(brightness: 0.75,
-                                            contrast: 1.00,
-                                            gamma: 1.30,
-                                            reset: false);
-                cController.DVL = 10;
+                    cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                                contrast: ContrastBar.Value / 100.0,
+                                gamma: GammaBar.Value / 100.0,
+                                reset: false);
+                    cController.DVL = 10;                
+                }
+                catch
+                {
+                    MessageBox.Show("Invalid number or adjustment range exceeded");
+                }
             }
+
+
             if (m.Msg == 0x0312 && m.WParam.ToInt32() == InterchangeMapHotkey)
             {
-                BrightnessBar.Value = 65;
-                ContrastBar.Value = 100;
-                GammaBar.Value = 130;
-                DVLBar.Value = 10;
+                try
+                {
+                    int profile2Brightness = int.Parse(profile2BrightnessText.Text);
+                    int profile2Contrast = int.Parse(profile2ContrastText.Text);
+                    int profile2Gamma = int.Parse(profile2GammaText.Text);
+                    BrightnessBar.Value = profile2Brightness;
+                    ContrastBar.Value = profile2Contrast;
+                    GammaBar.Value = profile2Gamma;
+                    DVLBar.Value = 10;
 
-                cController.ChangeColorRamp(brightness: 0.65,
-                                            contrast: 1.00,
-                                            gamma: 1.30,
-                                            reset: false);
-                cController.DVL = 10;
+                    cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                                contrast: ContrastBar.Value / 100.0,
+                                gamma: GammaBar.Value / 100.0,
+                                reset: false);
+                    cController.DVL = 10;
+                }
+                catch
+                {
+                    MessageBox.Show("Invalid number or adjustment range exceeded");
+                }
             }
             if (m.Msg == 0x0312 && m.WParam.ToInt32() == DefaultHotkey)
             {
@@ -240,7 +326,7 @@ namespace tarkov_settings
             {
                 if (GammaBar.Value < 280)
                 {
-                    GammaBar.Value = GammaBar.Value + 5;
+                    GammaBar.Value = GammaBar.Value + 10;
                     cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
                                                 contrast: ContrastBar.Value / 100.0,
                                                 gamma: GammaBar.Value / 100.0,
@@ -252,7 +338,7 @@ namespace tarkov_settings
             {
                 if (GammaBar.Value > 40)
                 {
-                    GammaBar.Value = GammaBar.Value - 5;
+                    GammaBar.Value = GammaBar.Value - 10;
                     cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
                                                 contrast: ContrastBar.Value / 100.0,
                                                 gamma: GammaBar.Value / 100.0,
@@ -275,7 +361,7 @@ namespace tarkov_settings
 
         private void TrackBar_ValueChanged(object sender, EventArgs e)
         {
-            var trackBar = sender as TrackBar;
+            var trackBar = sender as System.Windows.Forms.TrackBar;
 
             if (trackBar.Equals(BrightnessBar))
             {
@@ -320,6 +406,12 @@ namespace tarkov_settings
             appSetting.saturation = DVL;
             appSetting.display = (string)DisplayCombo.SelectedItem;
             appSetting.minimizeOnStart = minimizeOnStart;
+            appSetting.prof1Brightness = Prof1Brigtness;
+            appSetting.prof1Contrast = Prof1Contrast;
+            appSetting.prof1Gamma = Prof1Gamma;
+            appSetting.prof2Brightness = Prof2Brigtness;
+            appSetting.prof2Contrast = Prof2Contrast;
+            appSetting.prof2Gamma = Prof2Gamma;
             appSetting.Save();
 
             Application.Exit();
