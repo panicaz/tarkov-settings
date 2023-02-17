@@ -17,5 +17,11 @@ namespace tarkov_settings.Setting
         };
         public string display = @"\\.\DISPLAY1";
         public bool minimizeOnStart = false;
+        public int prof1Brightness = 0;
+        public int prof1Contrast = 0;
+        public int prof1Gamma = 0;
+        public int prof2Brightness = 0;
+        public int prof2Contrast = 0;
+        public int prof2Gamma = 0;
     }
 }
