@@ -1,19 +1,26 @@
-# tarkov-settings (fullscreen hotkey +presets branch)
+# tarkov-settings (fullscreen hotkey +presets fork)
 ![screenshot](./1.png)
-I am by no means a C# programmer and my code is terrible. Do not use unless absolutely necessary. Better wait for original tarkov-settings updates.
-All the changes can be helpful for fullscreen users since tarkov-setting does not work in fullscreen mode
+I am not a C# programmer. Do not use unless absolutely necessary. 
+All the changes can be helpful for fullscreen users since original tarkov-setting does not work in fullscreen mode
 + added 3 customizable presets 
 + added hotkeys for the presets (alt+Num1, alt+Num2, alt+Num3)
 + added hotkeys for +10 and -10 gamma offset (alt+UP, alt+DOWN)
 + added manual apply with a hotkey (alt+Num0)
 - fixed brigtness and contrast bars min values (did nothing below 0)
 
+## [->**DOWNLOAD**<-](https://github.com/panicaz/tarkov-settings-fullscreen-hotkey/releases/)
 
-## ORIGINAL TEXT BELOW
+TODO list:
+- rename preset 1 an 2 because Intercharge now has similar to other maps color correction
+- add custom preset key settings
+- disable autoupdate (because it check original tarkov-settings version and not my fork)
+
+
+## ORIGINAL tarkov-settings DESCRIPTION TEXT BELOW
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fincheon-kim%2Ftarkov-settings&count_bg=%238C8C8C&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true)](https://hits.seeyoufarm.com)
 
-## [->**DOWNLOAD Latest**<-](https://github.com/incheon-kim/tarkov-settings/releases/latest)
+## [->**DOWNLOAD original Latest**<-](https://github.com/incheon-kim/tarkov-settings/releases/latest)
 
 Automatically change color settings for [Escape from Tarkov](https://escapefromtarkov.com).
 
