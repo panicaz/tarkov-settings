@@ -1,5 +1,6 @@
 # tarkov-settings (fullscreen hotkey +presets fork)
 ![screenshot](./1.png)
+
 I am not a C# programmer. Do not use unless absolutely necessary. 
 All the changes can be helpful for fullscreen users since original tarkov-setting does not work in fullscreen mode
 + added 3 customizable presets 
